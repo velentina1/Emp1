@@ -21,4 +21,6 @@ public interface EmpDao {
     boolean updateEmpByEmpno(Emp emp);
 
     List<Emp> selectByEname(String ename);
+
+    int getTotal();
 }

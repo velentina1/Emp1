@@ -17,4 +17,7 @@ public interface EmpService {
     boolean addEmp(Emp emp);
 
     List<Emp> selectEmpByEname(String ename);
+    public List<Emp> selectByPage(int pageNo, int pageSize);
+
+    int getTotalRecords();
 }

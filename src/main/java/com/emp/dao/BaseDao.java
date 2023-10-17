@@ -104,4 +104,31 @@ public class BaseDao {
 
         return list;
     }
+
+    public int Count (String sql, Object...params){
+        Connection conn = null;
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+        int totalRecords = 0;
+        try {
+            // 建立数据库连接
+            conn = JDBCUtil.getConnection();
+            pstmt = JDBCUtil.getPreparedStatement(sql,conn);
+            JDBCUtil.bindPstmt(pstmt,params);
+            rs = pstmt.executeQuery();
+
+            if (rs.next()) {
+                totalRecords = rs.getInt(1);
+            }
+        } catch (SQLException e) {
+            // 处理异常
+            e.printStackTrace();
+        } finally {
+            JDBCUtil.close(rs,pstmt,conn);
+        }
+
+        return totalRecords;
+    }
+
 }
+

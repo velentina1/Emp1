@@ -68,5 +68,11 @@ public class EmpDaoImpl extends BaseDao implements EmpDao{
         return QueryAll(sql,ename);
     }
 
+    @Override
+    public int getTotal() {
+        String sql = "SELECT COUNT(*) FROM emp";
+        return Count(sql);
+    }
+
 
 }

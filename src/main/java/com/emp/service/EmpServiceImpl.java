@@ -37,4 +37,14 @@ public class EmpServiceImpl implements EmpService{
     public List<Emp> selectEmpByEname(String ename) {
         return empDao.selectByEname(ename);
     }
+
+    @Override
+    public List<Emp> selectByPage(int pageNo, int pageSize) {
+        return empDao.selectByPage(pageNo,pageSize);
+    }
+
+    @Override
+    public int getTotalRecords() {
+        return empDao.getTotal();
+    }
 }
